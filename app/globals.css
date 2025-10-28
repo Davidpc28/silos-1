@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Altura del navbar */
+}
+
+:root {
+  --primary: #5b87de;
+  --primary-dark: #4a6ec7;
+  --primary-light: #7ba3e8;
+  --secondary: #4db5a0;
+  --secondary-dark: #3d9484;
+  --secondary-light: #6fcdb9;
+}
+
+body {
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
