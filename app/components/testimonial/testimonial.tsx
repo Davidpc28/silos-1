@@ -27,7 +27,12 @@ type Props = {
   tagline: string;
   heading: string;
   description: string;
-  buttons: ButtonProps[];
+  buttons: Array<{
+    title: string;
+    variant?: "primary" | "secondary" | "white" | "glass";
+    size?: "sm" | "md" | "lg";
+    iconRight?: React.ReactNode;
+  }>;
   featureSections: FeatureSectionProps[];
 };
 
@@ -61,7 +66,12 @@ export const Layout416 = (props: Layout416Props) => {
               <p className="md:text-md">{description}</p>
               <div className="mt-6 flex items-center gap-x-4 md:mt-8">
                 {buttons.map((button, index) => (
-                  <Button    key={index} {...button}>
+                  <Button
+                    key={index}
+                    {...button}
+                    variant={button.variant}
+                    size={button.size}
+                  >
                     {button.title}
                   </Button>
                 ))}
@@ -153,8 +163,8 @@ export const Layout416Defaults: Props = {
     { title: "Contáctanos", variant: "secondary" },
     {
       title: "Ver Más Casos",
-      variant: "link",
-      size: "link",
+      variant: "primary",
+      size: "sm",
       iconRight: <RxChevronRight />,
     },
   ],

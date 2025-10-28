@@ -111,7 +111,10 @@ export const Blog66 = (props: Blog66Props) => {
                   key={index}
                   className="flex size-full flex-col items-center justify-start"
                 >
-                  <a href={post.url} className="mb-5 inline-block md:mb-6 relative">
+                  <a
+                    href={post.url}
+                    className="mb-5 inline-block md:mb-6 relative"
+                  >
                     <img
                       src={post.image.src}
                       alt={post.image.alt}
@@ -174,8 +177,8 @@ export const Blog66Defaults: Props = {
         "Todo lo que necesitas saber para invertir con seguridad en subastas judiciales e inmobiliarias.",
       button: {
         title: "Leer más",
-        variant: "link",
-        size: "link",
+        variant: "primary",
+        size: "sm",
         iconRight: <RxChevronRight />,
       },
     },
@@ -192,8 +195,8 @@ export const Blog66Defaults: Props = {
         "Información esencial sobre procesos de divorcio, custodia y medidas paternofiliales.",
       button: {
         title: "Leer más",
-        variant: "link",
-        size: "link",
+        variant: "primary",
+        size: "sm",
         iconRight: <RxChevronRight />,
       },
     },
@@ -210,8 +213,8 @@ export const Blog66Defaults: Props = {
         "Todo sobre herencias, testamentos y la gestión de bienes sucesorios.",
       button: {
         title: "Leer más",
-        variant: "link",
-        size: "link",
+        variant: "primary",
+        size: "sm",
         iconRight: <RxChevronRight />,
       },
     },
@@ -228,8 +231,8 @@ export const Blog66Defaults: Props = {
         "Claves para identificar y aprovechar las mejores oportunidades de inversión inmobiliaria.",
       button: {
         title: "Leer más",
-        variant: "link",
-        size: "link",
+        variant: "primary",
+        size: "sm",
         iconRight: <RxChevronRight />,
       },
     },

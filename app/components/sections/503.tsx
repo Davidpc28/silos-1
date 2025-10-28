@@ -130,8 +130,8 @@ export const Layout503Defaults: Props = {
     { title: "Consulta Gratuita", variant: "secondary" },
     {
       title: "Conoce Más",
-      variant: "link",
-      size: "link",
+      variant: "primary",
+      size: "sm",
       iconRight: <RxChevronRight />,
     },
   ],
@@ -150,8 +150,8 @@ export const Layout503Defaults: Props = {
             { title: "Ver Casos de Éxito", variant: "secondary" },
             {
               title: "Más Información",
-              variant: "link",
-              size: "link",
+              variant: "primary",
+              size: "sm",
               iconRight: <RxChevronRight />,
             },
           ],
@@ -175,8 +175,8 @@ export const Layout503Defaults: Props = {
             { title: "Ver Servicios", variant: "secondary" },
             {
               title: "Contactar",
-              variant: "link",
-              size: "link",
+              variant: "primary",
+              size: "sm",
               iconRight: <RxChevronRight />,
             },
           ],
@@ -200,8 +200,8 @@ export const Layout503Defaults: Props = {
             { title: "Agendar Consulta", variant: "secondary" },
             {
               title: "Conocer al Equipo",
-              variant: "link",
-              size: "link",
+              variant: "primary",
+              size: "sm",
               iconRight: <RxChevronRight />,
             },
           ],

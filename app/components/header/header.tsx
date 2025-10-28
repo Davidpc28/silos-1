@@ -171,14 +171,10 @@ export const Header103Defaults: Props = {
           {
             title: "Consulta Gratuita",
             variant: "primary",
-            size: "md",
-            children: "Consulta Gratuita",
           },
           {
             title: "Conoce Más",
             variant: "glass",
-            size: "md",
-            children: "Conoce Más",
           },
         ],
         image: {
@@ -195,14 +191,10 @@ export const Header103Defaults: Props = {
           {
             title: "Nuestras Subastas",
             variant: "primary",
-            size: "md",
-            children: "Nuestras Subastas",
           },
           {
             title: "Contactar",
             variant: "glass",
-            size: "md",
-            children: "Contactar",
           },
         ],
         image: {
@@ -219,14 +211,10 @@ export const Header103Defaults: Props = {
           {
             title: "Ver Servicios",
             variant: "primary",
-            size: "md",
-            children: "Ver Servicios",
           },
           {
             title: "Agendar Cita",
             variant: "glass",
-            size: "md",
-            children: "Agendar Cita",
           },
         ],
         image: {
@@ -243,14 +231,10 @@ export const Header103Defaults: Props = {
           {
             title: "Conoce al Equipo",
             variant: "primary",
-            size: "md",
-            children: "Conoce al Equipo",
           },
           {
             title: "Contáctanos",
             variant: "glass",
-            size: "md",
-            children: "Contáctanos",
           },
         ],
         image: {
