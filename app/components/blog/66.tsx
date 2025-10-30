@@ -1,20 +1,4 @@
-"use client";
-
-import React from "react";
-import { useState, useEffect } from "react";
-import type { CarouselApi } from "@relume_io/relume-ui";
-import clsx from "clsx";
-import {
-  Button,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@relume_io/relume-ui";
-import { Button as CustomButton } from "../ui/Button";
-import { RxChevronRight } from "react-icons/rx";
-import { useRouter } from "next/navigation";
+import { Button } from "../ui/Button";
 
 type ImageProps = {
   src: string;
@@ -32,7 +16,6 @@ type BlogPost = {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
-    iconRight?: React.ReactNode;
   };
 };
 
@@ -40,11 +23,12 @@ type Props = {
   tagline: string;
   heading: string;
   description: string;
-  blogPosts: BlogPost[];
   button: {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
+    size?: "sm" | "md" | "lg";
   };
+  blogPosts: BlogPost[];
 };
 
 export type Blog66Props = React.ComponentPropsWithoutRef<"section"> &
@@ -55,104 +39,64 @@ export const Blog66 = (props: Blog66Props) => {
     ...Blog66Defaults,
     ...props,
   };
-  const router = useRouter();
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-    setCurrent(api.selectedScrollSnap() + 1);
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
   return (
-    <section
-      id="blog"
-      className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28"
-    >
+    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="rb-12 mb-12 grid grid-cols-1 items-start justify-start gap-y-8 md:mb-18 md:grid-cols-[1fr_max-content] md:items-end md:justify-between md:gap-x-12 md:gap-y-4 lg:mb-20 lg:gap-x-20">
-          <div className="md:mr-12 lg:mr-0">
-            <div className="w-full ">
-              <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-              <h2 className="mb-3 text-5xl font-bold md:mb-4 md:text-7xl lg:text-8xl">
-                {heading}
-              </h2>
-              <p className="md:text-md">{description}</p>
-            </div>
+          <div className="w-full ">
+            <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
+            <h1 className="mb-3 text-5xl font-bold md:mb-4 md:text-7xl lg:text-8xl">
+              {heading}
+            </h1>
+            <p className="md:text-md">{description}</p>
           </div>
-          <div className="hidden md:flex">
-            <CustomButton
-              variant={button.variant || "secondary"}
-              onClick={() => router.push("/blogs")}
+          <div className="hidden flex-wrap items-center justify-end md:block">
+            <Button {...button}>{button.title}</Button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
+          {blogPosts.map((post, index) => (
+            <a
+              key={index}
+              href={post.url}
+              className="flex size-full flex-col items-center justify-start shadow-xl"
             >
-              {button.title}
-            </CustomButton>
-          </div>
-        </div>
-        <Carousel
-          setApi={setApi}
-          opts={{
-            loop: true,
-            align: "start",
-          }}
-        >
-          <CarouselContent className="ml-0">
-            {blogPosts.map((post, index) => (
-              <CarouselItem
-                key={index}
-                className="basis-[95%] pl-0 pr-6 sm:basis-[80%] md:basis-[33.33%] md:pr-8"
-              >
-                <div
-                  key={index}
-                  className="flex size-full flex-col items-center justify-start"
-                >
-                  <a
-                    href={post.url}
-                    className="mb-5 inline-block md:mb-6 relative"
-                  >
-                    <img
-                      src={post.image.src}
-                      alt={post.image.alt}
-                      className="aspect-[3/2] size-full object-cover"
-                    />
-                    <div className="absolute rounded-full overflow-hidden  top-2 right-2 rb-4 mb-3 flex w-auto items-center justify-start md:mb-4 bg-[#336a85] ">
-                      <p className=" bg-[#336a85] px-2 py-1 text-sm font-semibold text-white">
-                        {post.category}
-                      </p>
-                    </div>
-                  </a>
-
-                  <div className="flex w-full flex-col items-start justify-start">
-                    <a href={post.url} className="mb-2">
-                      <h2 className="text-xl font-bold md:text-2xl">
-                        {post.title}
-                      </h2>
-                    </a>
-                    <p>{post.description}</p>
-                    <div className="mt-5 flex items-center justify-center gap-2 md:mt-6">
-                      <CustomButton variant="primary" size="sm">
-                        {post.button.title}
-                        {post.button.iconRight && (
-                          <span className="ml-2">{post.button.iconRight}</span>
-                        )}
-                      </CustomButton>
-                    </div>
-                  </div>
+              <div className="relative w-full overflow-hidden aspect-video">
+                <img
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex w-full flex-1 flex-col justify-between px-5 py-6 md:p-6">
+                <div className="rb-4 mb-4 flex items-center">
+                  <p className="mr-4 bg-background-secondary px-2 py-1 text-sm font-semibold">
+                    {post.category}
+                  </p>
+                  <p className="inline text-sm font-semibold">
+                    {post.readTime}
+                  </p>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-        <div className="mt-12 flex justify-end md:hidden">
-          <CustomButton variant={button.variant || "secondary"}>
-            {button.title}
-          </CustomButton>
+
+                <div className="flex w-full flex-col items-start justify-start">
+                  <h2 className="mb-2 text-xl font-bold md:text-2xl">
+                    {post.title}
+                  </h2>
+                  <p>{post.description}</p>
+                  <Button
+                    {...post.button}
+                    className="mt-6 flex items-center justify-center gap-x-1"
+                  >
+                    {post.button.title}
+                  </Button>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
+        <Button {...button} className="mt-12 md:hidden">
+          {button.title}
+        </Button>
       </div>
     </section>
   );
@@ -162,7 +106,7 @@ export const Blog66Defaults: Props = {
   tagline: "Recursos Legales",
   heading: "Artículos y Guías",
   description: "Información útil sobre subastas, derecho civil, familia y más.",
-  button: { title: "Ver Todos", variant: "secondary" },
+  button: { title: "Ver Todos", variant: "primary" },
   blogPosts: [
     {
       url: "#",
@@ -179,7 +123,6 @@ export const Blog66Defaults: Props = {
         title: "Leer más",
         variant: "primary",
         size: "sm",
-        iconRight: <RxChevronRight />,
       },
     },
     {
@@ -197,7 +140,6 @@ export const Blog66Defaults: Props = {
         title: "Leer más",
         variant: "primary",
         size: "sm",
-        iconRight: <RxChevronRight />,
       },
     },
     {
@@ -215,25 +157,6 @@ export const Blog66Defaults: Props = {
         title: "Leer más",
         variant: "primary",
         size: "sm",
-        iconRight: <RxChevronRight />,
-      },
-    },
-    {
-      url: "#",
-      image: {
-        src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
-        alt: "Inversión inmobiliaria",
-      },
-      category: "Inmobiliaria",
-      readTime: "5 min lectura",
-      title: "Inversión inmobiliaria: Oportunidades en el mercado",
-      description:
-        "Claves para identificar y aprovechar las mejores oportunidades de inversión inmobiliaria.",
-      button: {
-        title: "Leer más",
-        variant: "primary",
-        size: "sm",
-        iconRight: <RxChevronRight />,
       },
     },
   ],

@@ -1,10 +1,4 @@
-import {
-  Button,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@relume_io/relume-ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@relume_io/relume-ui";
 import { Button as CustomButton } from "../ui/Button";
 import { RxChevronRight } from "react-icons/rx";
 
@@ -59,14 +53,14 @@ export const Layout507 = (props: Layout507Props) => {
           </h1>
           <p className="md:text-md">{description}</p>
         </div>
-        <div className="relative grid auto-cols-fr grid-cols-1 gap-x-12 border border-border-primary lg:gap-x-0">
+        <div className="relative grid auto-cols-fr grid-cols-1 gap-x-12 shadow-xl lg:gap-x-0">
           <Tabs defaultValue={defaultValue}>
             <TabsList className="flex-col md:flex-row">
               {tabs.map((tab, index) => (
                 <TabsTrigger
                   key={index}
                   value={tab.value}
-                  className="flex w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-8 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
+                  className="flex cursor-pointer w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-8 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
                 >
                   {tab.trigger}
                 </TabsTrigger>
@@ -102,7 +96,7 @@ const FeatureCard = ({ tab }: { tab: Tab }) => {
             <CustomButton
               key={index}
               variant={button.variant || "secondary"}
-              size={button.size}
+              size={button.size || "md"}
             >
               {button.title}
               {button.iconRight && (
@@ -143,7 +137,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Más Información",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],
@@ -166,7 +160,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Ver Más",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],
@@ -189,7 +183,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Conocer Más",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],
@@ -212,7 +206,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Más Detalles",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],
@@ -235,7 +229,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Más Información",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],
@@ -258,7 +252,7 @@ export const Layout507Defaults: Props = {
           {
             title: "Contactar",
             variant: "primary",
-            size: "sm",
+
             iconRight: <RxChevronRight />,
           },
         ],

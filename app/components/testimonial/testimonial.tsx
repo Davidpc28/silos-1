@@ -129,7 +129,7 @@ const FeatureSection = ({
 
   return (
     <motion.div
-      className="absolute mx-6 flex flex-col justify-between border border-border-primary bg-white p-8 md:ml-0"
+      className="absolute mx-6 flex flex-col justify-between shadow-xl bg-white p-8 md:ml-0"
       style={
         {
           rotate: index === totalSections - 1 ? "6deg" : rotate,
@@ -164,8 +164,6 @@ export const Layout416Defaults: Props = {
     {
       title: "Ver Más Casos",
       variant: "primary",
-      size: "sm",
-      iconRight: <RxChevronRight />,
     },
   ],
   featureSections: [

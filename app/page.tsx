@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Navbar18 } from "./components/navbar/navbar";
 import { Header103, Header103Defaults } from "./components/header/header";
 import { Cta51, Cta51Defaults } from "./components/cta/cta";
