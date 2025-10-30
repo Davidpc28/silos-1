@@ -70,7 +70,7 @@ export const Layout503 = (props: Layout503Props) => {
                 <CustomButton
                   key={index}
                   variant={button.variant || "secondary"}
-                  size={button.size}
+                  size={button.size || "md"}
                 >
                   {button.title}
                   {button.iconRight && (
@@ -131,7 +131,7 @@ export const Layout503Defaults: Props = {
     {
       title: "Conoce Más",
       variant: "primary",
-      size: "sm",
+     
       iconRight: <RxChevronRight />,
     },
   ],
@@ -151,7 +151,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Más Información",
               variant: "primary",
-              size: "sm",
+             
               iconRight: <RxChevronRight />,
             },
           ],
@@ -176,7 +176,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Contactar",
               variant: "primary",
-              size: "sm",
+             
               iconRight: <RxChevronRight />,
             },
           ],
@@ -201,7 +201,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Conocer al Equipo",
               variant: "primary",
-              size: "sm",
+             
               iconRight: <RxChevronRight />,
             },
           ],

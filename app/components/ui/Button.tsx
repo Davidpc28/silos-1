@@ -19,7 +19,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-gradient-to-r from-[#336a85] to-[#4a8aa8] text-white shadow-[0_4px_15px_rgba(51,106,133,0.25)] hover:shadow-[0_6px_20px_rgba(51,106,133,0.35)] hover:scale-[1.02] active:scale-[0.98]",
+        "bg-gradient-to-r from-[#336a85] to-[#4a8aa8] text-white  hover:shadow-[0_6px_20px_rgba(51,106,133,0.35)] hover:scale-[1.02] active:scale-[0.98]",
       secondary:
         "bg-[#f1f1f1] text-[#1a202c] hover:bg-[#e5e5e5] shadow-sm hover:shadow-md active:scale-[0.98]",
       white:

@@ -77,8 +77,8 @@ export const Navbar18 = (props: Navbar18Props) => {
 
   return (
     <section
-      id="relume"
-      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center border-b border-b-border-primary px-[5%] md:min-h-18"
+      id="navbar"
+      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center px-[5%] md:h-[4rem]"
     >
       <div className="mx-auto flex size-full items-center justify-between">
         <a
@@ -88,9 +88,11 @@ export const Navbar18 = (props: Navbar18Props) => {
           <img src={logo.src} alt={logo.alt} className="w-32 h-auto" />
         </a>
         <div className="flex items-center justify-center gap-2 lg:gap-4">
-          <Button variant="primary" size="md">
-            {button.title}
-          </Button>
+          <div className="hidden md:block">
+            <Button variant="primary" size="md">
+              {button.title}
+            </Button>
+          </div>
           <button
             className="-mr-2 flex size-12 flex-col items-center justify-center justify-self-end lg:mr-0"
             onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -160,7 +162,6 @@ const Menu = ({
     e: React.MouseEvent<HTMLAnchorElement>,
     url: string
   ) => {
-    // Si el link es ancla, y NO estamos en la página principal, redirigimos a "/"
     if (url.startsWith("#")) {
       e.preventDefault();
       if (window.location.pathname !== "/") {
@@ -179,7 +180,7 @@ const Menu = ({
     }
   };
   return (
-    <div className="fixed top-15 bottom-0 left-0 bg-white h-[calc(100vh-4rem)] inset-x-0 w-full overflow-hidden">
+    <div className="fixed top-[4rem] bottom-0 left-0 bg-white h-[calc(100vh-4rem)] inset-x-0 w-full overflow-hidden">
       <motion.div
         variants={{
           open: { opacity: 1 },
