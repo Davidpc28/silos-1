@@ -15,6 +15,7 @@ import { Contact13, Contact13Defaults } from "./components/footer/footer";
 import { Layout409, Layout409Defaults } from "./components/blog/409";
 import { Blog66, Blog66Defaults } from "./components/blog/66";
 
+
 export default function Home() {
   return (
     <div className="flex flex-col  bg-white">
