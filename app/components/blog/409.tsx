@@ -111,12 +111,12 @@ const FeatureSection = ({
   return (
     <React.Fragment>
       {isMobile ? (
-        <div className="static grid grid-cols-1 content-center overflow-hidden border border-border-primary bg-white">
+        <div className="static grid grid-cols-1 content-center overflow-hidden shadow-xl bg-white">
           <FeatureSectionContent isEven={isEven} {...featureSection} />
         </div>
       ) : (
         <motion.div
-          className="static grid grid-cols-1 content-center overflow-hidden border border-border-primary bg-white md:sticky md:top-[10%] md:mb-[10vh] md:h-[80vh] md:grid-cols-2"
+          className="static grid grid-cols-1 content-center overflow-hidden shadow-xl bg-white md:sticky md:top-[10%] md:mb-[10vh] md:h-[80vh] md:grid-cols-2"
           style={{ scale }}
         >
           <FeatureSectionContent isEven={isEven} {...featureSection} />

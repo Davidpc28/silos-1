@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Navbar18 } from "./components/navbar/navbar";
 import { Header103, Header103Defaults } from "./components/header/header";
 import { Cta51, Cta51Defaults } from "./components/cta/cta";
@@ -15,6 +14,7 @@ import {
 import { Contact13, Contact13Defaults } from "./components/footer/footer";
 import { Layout409, Layout409Defaults } from "./components/blog/409";
 import { Blog66, Blog66Defaults } from "./components/blog/66";
+
 
 export default function Home() {
   return (

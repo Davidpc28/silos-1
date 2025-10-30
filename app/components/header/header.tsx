@@ -73,10 +73,10 @@ export const Header103 = (props: Header103Props) => {
               onClick={() => setActiveTab(trigger.value)}
               className="relative flex-1 whitespace-normal border-0 bg-transparent px-4 py-4 text-center text-neutral-light duration-0 data-[state=active]:bg-transparent data-[state=active]:text-neutral-white sm:px-8 md:min-w-32"
             >
-              <span className="text-white">{trigger.text}</span>
+              <span className="text-white hidden md:block">{trigger.text}</span>
               <div className="absolute inset-0 top-auto h-1 w-full bg-white/20">
                 <motion.div
-                  className="h-full bg-white"
+                  className="h-full bg-white "
                   initial={{ width: "0%" }}
                   animate={{
                     width: activeTab === trigger.value ? "100%" : "0%",
@@ -118,9 +118,9 @@ const TabContent = ({ ...content }: TabContent) => {
           <p className="text-text-alternative md:text-md">
             {content.description}
           </p>
-          <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
+          <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8 flex-col md:flex-row gap-6 ">
             {content.buttons.map((button, index) => (
-              <Button key={index} {...button}>
+              <Button key={index} {...button} size="lg">
                 {button.title}
               </Button>
             ))}

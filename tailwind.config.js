@@ -3,8 +3,10 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+      
     "./node_modules/@relume_io/relume-ui/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   presets: [require("@relume_io/relume-tailwind")],
   theme: {
     extend: {
@@ -53,4 +55,3 @@ module.exports = {
     },
   },
 };
-

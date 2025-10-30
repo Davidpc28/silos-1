@@ -20,11 +20,11 @@ export const Cta51 = (props: Cta51Props) => {
   };
   return (
     <section
-      id="relume"
+      id="cta"
       className="px-[5%] py-16 md:py-24 lg:py-28 bg-background"
     >
       <div className="container">
-        <div className="flex flex-col items-center border border-border-primary p-8 md:p-12 lg:p-16">
+        <div className="flex flex-col items-center shadow-xl p-8 md:p-12 lg:p-16">
           <div className="text-center">
             <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
               {heading}

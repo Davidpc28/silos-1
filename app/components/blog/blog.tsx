@@ -42,8 +42,8 @@ export const Team20 = (props: Team20Props) => {
   };
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container grid grid-cols-1 items-start md:grid-flow-row md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
-        <div className="max-w-lg sticky top-20">
+      <div className="container grid grid-cols-1 items-start gap-6 md:grid-flow-row md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
+        <div className=" md:sticky md:top-20">
           <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
           <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
             {heading}
@@ -97,7 +97,7 @@ export const Team20Defaults: Props = {
   heading: "Conoce a SILOS",
   description:
     "Un equipo de profesionales comprometidos con la excelencia legal. Fundador y dos socias con amplia experiencia en subastas, derecho civil y familiar.",
-  button: { title: "Contáctanos", variant: "secondary" },
+  button: { title: "Contáctanos", variant: "primary" },
   teamMembers: [
     {
       image: {
