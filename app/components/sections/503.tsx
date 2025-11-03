@@ -50,13 +50,16 @@ export type Layout503Props = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
 export const Layout503 = (props: Layout503Props) => {
-  const { tagline, heading, description, buttons, tabs, defaultTabValue } = {
+  const { tagline, heading, description, buttons } = {
     ...Layout503Defaults,
     ...props,
   };
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section
+      id="nosotros"
+      className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+    >
       <div className="container">
         <div className="mb-12 md:mb-18 lg:mb-20">
           <div className="mx-auto text-center">
@@ -131,7 +134,7 @@ export const Layout503Defaults: Props = {
     {
       title: "Conoce Más",
       variant: "primary",
-     
+
       iconRight: <RxChevronRight />,
     },
   ],
@@ -151,7 +154,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Más Información",
               variant: "primary",
-             
+
               iconRight: <RxChevronRight />,
             },
           ],
@@ -176,7 +179,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Contactar",
               variant: "primary",
-             
+
               iconRight: <RxChevronRight />,
             },
           ],
@@ -201,7 +204,7 @@ export const Layout503Defaults: Props = {
             {
               title: "Conocer al Equipo",
               variant: "primary",
-             
+
               iconRight: <RxChevronRight />,
             },
           ],

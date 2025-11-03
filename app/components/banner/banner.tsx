@@ -63,11 +63,11 @@ export const Banner16 = (props: Banner16Props) => {
 
   return (
     <section
-      id="relume"
+      id="banner-principal"
       ref={sectionRef}
-      className="flex w-screen max-w-full flex-col justify-end overflow-hidden"
+      className="flex w-screen max-w-full flex-col justify-end overflow-hidden "
     >
-      <div className="flex justify-end">
+      <div className="flex justify-end container mx-auto">
         {Array(2)
           .fill(0)
           .map((_, index) => (
@@ -76,7 +76,7 @@ export const Banner16 = (props: Banner16Props) => {
             </React.Fragment>
           ))}
       </div>
-      <div className="flex justify-start">
+      <div className="flex justify-start container mx-auto">
         {Array(2)
           .fill(0)
           .map((_, index) => (

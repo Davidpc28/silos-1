@@ -21,7 +21,7 @@ export const Cta51 = (props: Cta51Props) => {
   return (
     <section
       id="cta"
-      className="px-[5%] py-16 md:py-24 lg:py-28 bg-background"
+      className="px-[2.5%] py-16 md:py-24 lg:py-28 bg-background container mx-auto"
     >
       <div className="container">
         <div className="flex flex-col items-center shadow-xl p-8 md:p-12 lg:p-16">

@@ -54,7 +54,11 @@ export const Layout416 = (props: Layout416Props) => {
   });
 
   return (
-    <section id="testimonios" ref={containerRef} className="px-[5%]">
+    <section
+      id="testimonios"
+      ref={containerRef}
+      className="px-[2.5%] container mx-auto"
+    >
       <div className="container">
         <div className="relative h-[300svh] lg:h-[300vh]">
           <div className="static grid h-full grid-cols-1 content-start items-center gap-x-20 gap-y-16 py-16 md:sticky md:top-0 md:h-[100svh] md:grid-cols-2 md:content-normal md:py-0 lg:h-screen">

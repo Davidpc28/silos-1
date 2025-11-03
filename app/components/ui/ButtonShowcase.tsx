@@ -5,7 +5,7 @@ import { Button } from "./Button";
 
 export const ButtonShowcase = () => {
   return (
-    <div className="py-16 px-[5%]">
+    <div className="py-16 px-[2.5%]">
       <div className="container mx-auto space-y-12">
         {/* Variante en fondo claro */}
         <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-12">
@@ -125,4 +125,3 @@ export const ButtonShowcase = () => {
     </div>
   );
 };
-

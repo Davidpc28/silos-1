@@ -40,7 +40,10 @@ export const Blog66 = (props: Blog66Props) => {
     ...props,
   };
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section
+      id="blog"
+      className="overflow-hidden px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+    >
       <div className="container">
         <div className="rb-12 mb-12 grid grid-cols-1 items-start justify-start gap-y-8 md:mb-18 md:grid-cols-[1fr_max-content] md:items-end md:justify-between md:gap-x-12 md:gap-y-4 lg:mb-20 lg:gap-x-20">
           <div className="w-full ">
@@ -94,7 +97,7 @@ export const Blog66 = (props: Blog66Props) => {
             </a>
           ))}
         </div>
-        <Button {...button} className="mt-12 md:hidden">
+        <Button {...button} className="mt-12 md:hidden mx-auto w-full">
           {button.title}
         </Button>
       </div>

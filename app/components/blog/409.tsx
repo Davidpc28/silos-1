@@ -70,7 +70,10 @@ export const Layout409 = (props: Layout409Props) => {
   const scales = calculateScales(featureSections.length, scrollYProgress);
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section
+      id=""
+      className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+    >
       <div className="container">
         <div className="mx-auto mb-12 w-full text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">{tagline}</p>

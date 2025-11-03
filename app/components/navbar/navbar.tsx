@@ -78,9 +78,9 @@ export const Navbar18 = (props: Navbar18Props) => {
   return (
     <section
       id="navbar"
-      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center px-[5%] md:h-[4rem]"
+      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center px-[2.5%] md:h-[4rem]"
     >
-      <div className="mx-auto flex size-full items-center justify-between">
+      <div className="mx-auto flex size-full items-center justify-between container">
         <a
           href={logo.url}
           onClick={(e) => handleNavClick(e, logo.url || "#inicio")}
@@ -190,7 +190,7 @@ const Menu = ({
         initial="close"
         exit="close"
         transition={{ duration: 0.2 }}
-        className="flex h-full flex-col overflow-auto bg-background-primary px-[5%] pt-0.5"
+        className="flex h-full flex-col overflow-auto bg-background-primary px-[2.5%] pt-0.5 container mx-auto"
       >
         <div className="my-auto grid grid-cols-1 gap-x-10 gap-y-4 py-4 sm:grid-cols-2 md:py-0">
           {navLinks.map((navLink, index) => (

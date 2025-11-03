@@ -44,7 +44,10 @@ export const Layout507 = (props: Layout507Props) => {
   };
 
   return (
-    <section id="servicios" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section
+      id="servicios"
+      className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+    >
       <div className="container">
         <div className="mx-auto mb-12 w-full  text-center md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
@@ -53,9 +56,9 @@ export const Layout507 = (props: Layout507Props) => {
           </h1>
           <p className="md:text-md">{description}</p>
         </div>
-        <div className="relative grid auto-cols-fr grid-cols-1 gap-x-12 shadow-xl lg:gap-x-0">
+        <div className="relative grid auto-cols-fr grid-cols-1 gap-x-12 shadow-xl lg:gap-x-0 ">
           <Tabs defaultValue={defaultValue}>
-            <TabsList className="flex-col md:flex-row">
+            <TabsList className="flex-col md:flex-row overflow-x-scroll no-scrollbar">
               {tabs.map((tab, index) => (
                 <TabsTrigger
                   key={index}

@@ -43,7 +43,10 @@ export const Contact13 = (props: Contact13Props) => {
     ...props,
   };
   return (
-    <section id="contacto" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section
+      id="contacto"
+      className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+    >
       <div className="container">
         <div className="rb-12 mb-12  md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">{tagline}</p>

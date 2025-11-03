@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
-import type { ButtonProps } from "../ui/Button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -47,9 +46,12 @@ export const Header103 = (props: Header103Props) => {
   };
 
   const [activeTab, setActiveTab] = useState(defaultTabValue);
+  useEffect(() => {
+    setActiveTab(defaultTabValue);
+  }, [defaultTabValue]);
 
   return (
-    <section id="inicio" className="relative min-h-screen">
+    <section id="inicio" className="relative min-h-screen h-auto">
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <AnimatePresence initial={false}>
           {tabs.content.map(
@@ -65,36 +67,61 @@ export const Header103 = (props: Header103Props) => {
               )
           )}
         </AnimatePresence>
-        <TabsList className="absolute bottom-12 left-0 right-0 top-auto z-20 mx-auto flex justify-center gap-4 px-[5vw] md:bottom-16 lg:bottom-20 lg:max-w-xl">
-          {tabs.trigger.map((trigger, index) => (
-            <TabsTrigger
-              key={index}
-              value={trigger.value}
-              onClick={() => setActiveTab(trigger.value)}
-              className="relative flex-1 whitespace-normal border-0 bg-transparent px-4 py-4 text-center text-neutral-light duration-0 data-[state=active]:bg-transparent data-[state=active]:text-neutral-white sm:px-8 md:min-w-32"
-            >
-              <span className="text-white hidden md:block">{trigger.text}</span>
-              <div className="absolute inset-0 top-auto h-1 w-full bg-white/20">
-                <motion.div
-                  className="h-full bg-white "
-                  initial={{ width: "0%" }}
-                  animate={{
-                    width: activeTab === trigger.value ? "100%" : "0%",
-                  }}
-                  transition={{
-                    duration: activeTab === trigger.value ? 1.5 : 0.3,
-                    ...(activeTab === trigger.value
-                      ? {
-                          type: "spring",
-                          stiffness: 25,
-                          damping: 30,
-                        }
-                      : { ease: "easeInOut" }),
-                  }}
-                />
-              </div>
-            </TabsTrigger>
-          ))}
+        <TabsList className="absolute top-4 left-[2.5%] right-[2.5%]  z-20 mx-auto flex justify-center gap-4 lg:max-w-xs">
+          {tabs.trigger.map((trigger, index) => {
+            // Implementa un "progreso" por trigger y cuando llegue a 100% salta a siguiente tab
+            // Para el ejemplo, simulamos el progreso con un temporizador
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const [progress, setProgress] = useState(0);
+
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useEffect(() => {
+              let timer: NodeJS.Timeout;
+              if (activeTab === trigger.value) {
+                setProgress(0);
+                timer = setInterval(() => {
+                  setProgress((prev) => {
+                    if (prev >= 100) {
+                      clearInterval(timer);
+                      // Saltar a la próxima diapositiva
+                      const nextIndex = (index + 1) % tabs.trigger.length;
+                      setActiveTab(tabs.trigger[nextIndex].value);
+                      return 0;
+                    }
+                    return prev + 1; // Ajusta esto para controlar la velocidad
+                  });
+                }, 40); // 40ms * 100 = 4s por diapositiva, ajustable
+              }
+              return () => clearInterval(timer);
+            }, [activeTab, trigger.value, index, tabs.trigger, setActiveTab]);
+
+            return (
+              <TabsTrigger
+                key={index}
+                value={trigger.value}
+                onClick={() => setActiveTab(trigger.value)}
+                className="relative flex-1 whitespace-normal border-0 bg-transparent px-4 py-4 text-center text-neutral-light duration-0 data-[state=active]:bg-transparent data-[state=active]:text-neutral-white sm:px-8 md:min-w-32"
+              >
+                <div className="absolute inset-0 bottom-auto h-1 w-full bg-white/20 z-10 rounded-full">
+                  <motion.div
+                    className="h-full bg-white rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={{
+                      width:
+                        activeTab === trigger.value ? `${progress}%` : "0%",
+                    }}
+                    transition={{
+                      duration: 0.1,
+                      ease: "linear",
+                    }}
+                  />
+                </div>
+                <span className="text-white hidden md:block">
+                  {trigger.text}
+                </span>
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
       </Tabs>
     </section>
@@ -104,7 +131,7 @@ export const Header103 = (props: Header103Props) => {
 const TabContent = ({ ...content }: TabContent) => {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <div className="px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="px-[2.5%] py-16 md:py-24 lg:py-28 container">
         <motion.div
           className="relative z-10 mx-auto text-center text-white"
           initial={{ y: "20%", opacity: 0 }}
@@ -112,7 +139,7 @@ const TabContent = ({ ...content }: TabContent) => {
           exit={{ y: "-20%", opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <h1 className="mb-5 text-6xl font-bold text-text-alternative md:mb-6 md:text-9xl lg:text-10xl">
+          <h1 className="mb-5 text-4xl font-bold text-text-alternative md:mb-6 lg:text-6xl">
             {content.heading}
           </h1>
           <p className="text-text-alternative md:text-md">
