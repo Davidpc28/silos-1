@@ -1,10 +1,3 @@
-import {
-  Button,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@relume_io/relume-ui";
 import { Button as CustomButton } from "../ui/Button";
 import { RxChevronRight } from "react-icons/rx";
 

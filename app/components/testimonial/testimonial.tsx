@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { useMediaQuery } from "@relume_io/relume-ui";
-import { RxChevronRight } from "react-icons/rx";
 import {
   MotionStyle,
   MotionValue,
