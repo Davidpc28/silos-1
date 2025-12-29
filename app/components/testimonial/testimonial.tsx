@@ -9,9 +9,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { Button } from "../ui/Button";
-import CalendlyButton from "../calendly/CalendlyButton";
-import WhatsAppButton from "../whatsapp/WhatsAppButton";
 
 type ImageProps = {
   src: string;
@@ -71,7 +68,6 @@ export const Layout416 = (props: Layout416Props) => {
                 {heading}
               </h2>
               <p className="md:text-md">{description}</p>
-        
             </div>
             <div className="sticky top-[25%] flex min-h-[24.5rem] flex-col items-center justify-center md:relative md:top-0 md:min-h-[auto]">
               {featureSections.map((section, index) => (
