@@ -1,5 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@relume_io/relume-ui";
 import { Button as CustomButton } from "../ui/Button";
+import CalendlyButton from "../calendly/CalendlyButton";
+import WhatsAppButton from "../whatsapp/WhatsAppButton";
 import { RxChevronRight } from "react-icons/rx";
 
 type ImageProps = {
@@ -16,6 +18,8 @@ type Feature = {
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
     iconRight?: React.ReactNode;
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
   image: ImageProps;
 };
@@ -63,7 +67,7 @@ export const Layout507 = (props: Layout507Props) => {
                 <TabsTrigger
                   key={index}
                   value={tab.value}
-                  className="flex cursor-pointer w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-8 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
+                  className="flex cursor-pointer w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-6 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
                 >
                   {tab.trigger}
                 </TabsTrigger>
@@ -95,18 +99,35 @@ const FeatureCard = ({ tab }: { tab: Tab }) => {
         </h2>
         <p>{tab.content.description}</p>
         <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-          {tab.content.buttons.map((button, index) => (
-            <CustomButton
-              key={index}
-              variant={button.variant || "secondary"}
-              size={button.size || "md"}
-            >
-              {button.title}
-              {button.iconRight && (
-                <span className="ml-2">{button.iconRight}</span>
-              )}
-            </CustomButton>
-          ))}
+          {tab.content.buttons.map((button, index) =>
+            button.isCalendly ? (
+              <CalendlyButton
+                key={index}
+                variant={button.variant || "primary"}
+                size={button.size || "md"}
+                text={button.title}
+              />
+            ) : button.isWhatsApp ? (
+              <WhatsAppButton
+                key={index}
+                variant={button.variant || "secondary"}
+                size={button.size || "md"}
+                text={button.title}
+                message="Hola, me gustaría contactar con vosotros a partir de la web SILOS para obtener más información sobre vuestros servicios."
+              />
+            ) : (
+              <CustomButton
+                key={index}
+                variant={button.variant || "secondary"}
+                size={button.size || "md"}
+              >
+                {button.title}
+                {button.iconRight && (
+                  <span className="ml-2">{button.iconRight}</span>
+                )}
+              </CustomButton>
+            )
+          )}
         </div>
       </div>
       <div>
@@ -136,11 +157,11 @@ export const Layout507Defaults: Props = {
         description:
           "Análisis exhaustivo de subastas, acompañamiento en la participación segura, asesoría legal completa y gestión integral del proceso. Te ayudamos a invertir con confianza y seguridad jurídica en cada paso.",
         buttons: [
-          { title: "Consultar Subastas", variant: "secondary" },
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
           {
-            title: "Más Información",
-            variant: "primary",
-
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
             iconRight: <RxChevronRight />,
           },
         ],
@@ -152,18 +173,18 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-2",
-      trigger: "Derecho Civil",
+      trigger: "Civil",
       content: {
-        tagline: "Asesoría Legal",
-        heading: "Derecho Civil Integral",
+        tagline: "Reclamaciones y Contratos",
+        heading: "Derecho Civil",
         description:
-          "Asesoramiento en contratos, reclamaciones, responsabilidad civil y todo tipo de asuntos civiles. Protegemos tus derechos con profesionalidad y experiencia en cada caso.",
+          "Reclamaciones de cantidad • Arrendamientos y desahucios • Responsabilidad civil • Contratos y obligaciones. Protegemos tus derechos con profesionalidad en cada caso.",
         buttons: [
-          { title: "Contactar", variant: "secondary" },
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
           {
-            title: "Ver Más",
-            variant: "primary",
-
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
             iconRight: <RxChevronRight />,
           },
         ],
@@ -175,18 +196,18 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-3",
-      trigger: "Derecho de Familia",
+      trigger: "Familia",
       content: {
-        tagline: "Con Sensibilidad y Profesionalidad",
+        tagline: "Divorcios, Custodia y Herencias",
         heading: "Derecho de Familia",
         description:
-          "Divorcios, medidas paternofiliales, herencias y sucesiones. Te acompañamos en momentos difíciles con un trato cercano, humano y resultados efectivos para tu familia.",
+          "Divorcios y separaciones • Custodia y pensión de alimentos • Modificación de medidas • Procedimientos de filiación. Te acompañamos en momentos difíciles con profesionalidad.",
         buttons: [
-          { title: "Agendar Consulta", variant: "secondary" },
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
           {
-            title: "Conocer Más",
-            variant: "primary",
-
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
             iconRight: <RxChevronRight />,
           },
         ],
@@ -198,70 +219,116 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-4",
-      trigger: "Inmobiliaria",
+      trigger: "Penal",
       content: {
-        tagline: "Inversión Segura",
-        heading: "Intermediación Inmobiliaria",
+        tagline: "Defensa Integral",
+        heading: "Derecho Penal",
         description:
-          "Servicios de intermediación inmobiliaria especializados en subastas y operaciones de compra-venta. Te ayudamos a encontrar las mejores oportunidades de inversión con seguridad jurídica.",
+          "Defensa penal • Juicios rápidos • Delitos contra el patrimonio • Asistencia al detenido. Protección total de tus derechos con especialistas en procedimiento penal.",
         buttons: [
-          { title: "Ver Propiedades", variant: "secondary" },
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
           {
-            title: "Más Detalles",
-            variant: "primary",
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
+            iconRight: <RxChevronRight />,
+          },
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
+          alt: "Derecho penal",
+        },
+      },
+    },
+    {
+      value: "tab-5",
+      trigger: "Extranjería",
+      content: {
+        tagline: "Inmigración y Residencia",
+        heading: "Derecho de Extranjería",
+        description:
+          "Arraigos • Nacionalidad española • Permisos de residencia y trabajo • Expulsiones y recursos. Asesoramiento especializado en trámites migratorios.",
+        buttons: [
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
+          {
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
+            iconRight: <RxChevronRight />,
+          },
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+          alt: "Derecho de extranjería",
+        },
+      },
+    },
+    {
+      value: "tab-6",
+      trigger: "Herencias Sucesiones",
+      content: {
+        tagline: "Gestión de Patrimonios",
+        heading: "Herencias y Sucesiones",
+        description:
+          "Testamentos • Declaraciones de herederos • Partición de herencias • Conflictos hereditarios. Resolvemos trámites sucesorios con claridad y transparencia.",
+        buttons: [
+          { title: "Agendar Llamada", variant: "primary", isCalendly: true },
+          {
+            title: "Contactar WhatsApp",
+            variant: "secondary",
+            isWhatsApp: true,
+            iconRight: <RxChevronRight />,
+          },
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
+          alt: "Herencias y sucesiones",
+        },
+      },
+    },
+    {
+      value: "tab-7",
+      trigger: "Compraventa de Vehículos",
+      content: {
+        tagline: "Asesoría Automotriz",
+        heading: "Compraventa de Vehículos",
+        description:
+          "Contratos de compraventa • Vicios ocultos • Reclamaciones por incumplimiento • Asesoramiento legal previo. Protege tu inversión en cada transacción.",
+        buttons: [
+          { title: "Agendar Llamada", variant: "primary" },
+          {
+            title: "Más Información",
+            variant: "secondary",
+
+            iconRight: <RxChevronRight />,
+          },
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=1200&q=80",
+          alt: "Compraventa de vehículos",
+        },
+      },
+    },
+    {
+      value: "tab-8",
+      trigger: "Compraventa de Inmuebles",
+      content: {
+        tagline: "Transacciones Seguras",
+        heading: "Compraventa de Inmuebles",
+        description:
+          "Contratos privados • Escrituras • Revisión legal previa • Defensa ante conflictos inmobiliarios. Seguridad jurídica total en tu inversión inmobiliaria.",
+        buttons: [
+          { title: "Agendar Llamada", variant: "primary" },
+          {
+            title: "Más Información",
+            variant: "secondary",
 
             iconRight: <RxChevronRight />,
           },
         ],
         image: {
           src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
-          alt: "Intermediación inmobiliaria",
-        },
-      },
-    },
-    {
-      value: "tab-5",
-      trigger: "Asesoría Financiera",
-      content: {
-        tagline: "Planificación Inteligente",
-        heading: "Asesoría Financiera Personalizada",
-        description:
-          "Análisis financiero y planificación estratégica para tus inversiones en subastas e inmuebles. Maximiza tus oportunidades con asesoramiento experto y personalizado.",
-        buttons: [
-          { title: "Solicitar Asesoría", variant: "secondary" },
-          {
-            title: "Más Información",
-            variant: "primary",
-
-            iconRight: <RxChevronRight />,
-          },
-        ],
-        image: {
-          src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
-          alt: "Asesoría financiera",
-        },
-      },
-    },
-    {
-      value: "tab-6",
-      trigger: "Consulta Gratuita",
-      content: {
-        tagline: "Primera Consulta Sin Compromiso",
-        heading: "Te Escuchamos y Orientamos",
-        description:
-          "Ofrecemos una primera consulta gratuita para evaluar tu caso. Nuestro equipo analizará tu situación y te ofrecerá las mejores soluciones legales adaptadas a tus necesidades específicas.",
-        buttons: [
-          { title: "Agendar Ahora", variant: "secondary" },
-          {
-            title: "Contactar",
-            variant: "primary",
-
-            iconRight: <RxChevronRight />,
-          },
-        ],
-        image: {
-          src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80",
-          alt: "Consulta gratuita",
+          alt: "Compraventa de inmuebles",
         },
       },
     },

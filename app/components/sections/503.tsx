@@ -1,4 +1,6 @@
 import { Button as CustomButton } from "../ui/Button";
+import CalendlyButton from "../calendly/CalendlyButton";
+import WhatsAppButton from "../whatsapp/WhatsAppButton";
 import { RxChevronRight } from "react-icons/rx";
 
 type ImageProps = {
@@ -15,6 +17,8 @@ type Feature = {
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
     iconRight?: React.ReactNode;
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
   image: ImageProps;
 };
@@ -34,6 +38,8 @@ type Props = {
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
     iconRight?: React.ReactNode;
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
   tabs: Tab[];
   defaultTabValue: string;
@@ -50,7 +56,7 @@ export const Layout503 = (props: Layout503Props) => {
 
   return (
     <section
-      id="nosotros"
+      id="ventajas"
       className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
     >
       <div className="container">
@@ -62,18 +68,35 @@ export const Layout503 = (props: Layout503Props) => {
             </h1>
             <p className="md:text-md">{description}</p>
             <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-              {buttons.map((button, index) => (
-                <CustomButton
-                  key={index}
-                  variant={button.variant || "secondary"}
-                  size={button.size || "md"}
-                >
-                  {button.title}
-                  {button.iconRight && (
-                    <span className="ml-2">{button.iconRight}</span>
-                  )}
-                </CustomButton>
-              ))}
+              {buttons.map((button, index) =>
+                button.isCalendly ? (
+                  <CalendlyButton
+                    key={index}
+                    variant={button.variant || "primary"}
+                    size={button.size || "md"}
+                    text={button.title}
+                  />
+                ) : button.isWhatsApp ? (
+                  <WhatsAppButton
+                    key={index}
+                    variant={button.variant || "secondary"}
+                    size={button.size || "md"}
+                    text={button.title}
+                    message="Hola, me gustaría contactar con vosotros a partir de la web SILOS para obtener más información sobre vuestros servicios."
+                  />
+                ) : (
+                  <CustomButton
+                    key={index}
+                    variant={button.variant || "secondary"}
+                    size={button.size || "md"}
+                  >
+                    {button.title}
+                    {button.iconRight && (
+                      <span className="ml-2">{button.iconRight}</span>
+                    )}
+                  </CustomButton>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -92,18 +115,35 @@ const Feature = (feature: Feature) => {
         </h2>
         <p>{feature.description}</p>
         <div className="mt-6 flex items-center gap-x-4 md:mt-8">
-          {feature.buttons.map((button, index) => (
-            <CustomButton
-              key={index}
-              variant={button.variant || "secondary"}
-              size={button.size}
-            >
-              {button.title}
-              {button.iconRight && (
-                <span className="ml-2">{button.iconRight}</span>
-              )}
-            </CustomButton>
-          ))}
+          {feature.buttons.map((button, index) =>
+            button.isCalendly ? (
+              <CalendlyButton
+                key={index}
+                variant={button.variant || "primary"}
+                size={button.size || "md"}
+                text={button.title}
+              />
+            ) : button.isWhatsApp ? (
+              <WhatsAppButton
+                key={index}
+                variant={button.variant || "secondary"}
+                size={button.size || "md"}
+                text={button.title}
+                message="Hola, me gustaría contactar con vosotros a partir de la web SILOS para obtener más información sobre vuestros servicios."
+              />
+            ) : (
+              <CustomButton
+                key={index}
+                variant={button.variant || "secondary"}
+                size={button.size}
+              >
+                {button.title}
+                {button.iconRight && (
+                  <span className="ml-2">{button.iconRight}</span>
+                )}
+              </CustomButton>
+            )
+          )}
         </div>
       </div>
       <div className="aspect-square">
@@ -118,16 +158,16 @@ const Feature = (feature: Feature) => {
 };
 
 export const Layout503Defaults: Props = {
-  tagline: "¿Por qué SILOS?",
-  heading: "Tu Despacho Legal de Confianza",
+  tagline: "¿Por qué elegirnos?",
+  heading: "Ventajas de Trabajar con SILOS",
   description:
-    "Somos especialistas en subastas judiciales e inmobiliarias con un enfoque integral en todas las áreas del derecho. Experiencia, compromiso y cercanía profesional.",
+    "Somos especialistas en subastas judiciales e inmobiliarias con un enfoque integral. Experiencia, compromiso y cercanía profesional en cada caso.",
   buttons: [
-    { title: "Consulta Gratuita", variant: "secondary" },
+    { title: "Agendar Llamada", variant: "primary", isCalendly: true },
     {
-      title: "Conoce Más",
-      variant: "primary",
-
+      title: "Contactar WhatsApp",
+      variant: "secondary",
+      isWhatsApp: true,
       iconRight: <RxChevronRight />,
     },
   ],
@@ -145,9 +185,9 @@ export const Layout503Defaults: Props = {
           buttons: [
             { title: "Ver Casos de Éxito", variant: "secondary" },
             {
-              title: "Más Información",
+              title: "Agendar Llamada",
               variant: "primary",
-
+              isCalendly: true,
               iconRight: <RxChevronRight />,
             },
           ],
@@ -170,9 +210,9 @@ export const Layout503Defaults: Props = {
           buttons: [
             { title: "Ver Servicios", variant: "secondary" },
             {
-              title: "Contactar",
+              title: "Agendar Llamada",
               variant: "primary",
-
+              isCalendly: true,
               iconRight: <RxChevronRight />,
             },
           ],
@@ -193,11 +233,15 @@ export const Layout503Defaults: Props = {
           description:
             "Entendemos que cada caso es único. Por eso ofrecemos un trato personalizado, cercano y humano sin perder el rigor profesional. Te escuchamos, te orientamos y te acompañamos en cada paso con transparencia y dedicación absoluta.",
           buttons: [
-            { title: "Agendar Consulta", variant: "secondary" },
             {
-              title: "Conocer al Equipo",
+              title: "Agendar Consulta",
+              variant: "secondary",
+              isCalendly: true,
+            },
+            {
+              title: "Contactar WhatsApp",
               variant: "primary",
-
+              isWhatsApp: true,
               iconRight: <RxChevronRight />,
             },
           ],

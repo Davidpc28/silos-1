@@ -9,7 +9,6 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { Button } from "../ui/Button";
 
 type ImageProps = {
   src: string;
@@ -31,6 +30,8 @@ type Props = {
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
     iconRight?: React.ReactNode;
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
   featureSections: FeatureSectionProps[];
 };
@@ -67,18 +68,6 @@ export const Layout416 = (props: Layout416Props) => {
                 {heading}
               </h2>
               <p className="md:text-md">{description}</p>
-              <div className="mt-6 flex items-center gap-x-4 md:mt-8">
-                {buttons.map((button, index) => (
-                  <Button
-                    key={index}
-                    {...button}
-                    variant={button.variant}
-                    size={button.size}
-                  >
-                    {button.title}
-                  </Button>
-                ))}
-              </div>
             </div>
             <div className="sticky top-[25%] flex min-h-[24.5rem] flex-col items-center justify-center md:relative md:top-0 md:min-h-[auto]">
               {featureSections.map((section, index) => (
@@ -159,14 +148,14 @@ const FeatureSection = ({
 
 export const Layout416Defaults: Props = {
   tagline: "Testimonios",
-  heading: "Lo que dicen nuestros clientes",
+  heading: "Clientes Satisfechos",
   description:
-    "La confianza de nuestros clientes es nuestro mayor logro. Descubre cómo SILOS ha ayudado a personas como tú a alcanzar sus objetivos legales e inmobiliarios con éxito.",
+    "La confianza de nuestros clientes es nuestro mayor logro. Conoce las experiencias de quienes ya han trabajado con SILOS y han alcanzado sus objetivos.",
   buttons: [
-    { title: "Contáctanos", variant: "secondary" },
+    { title: "Agendar Llamada", variant: "primary" },
     {
-      title: "Ver Más Casos",
-      variant: "primary",
+      title: "Enviar Mensaje",
+      variant: "secondary",
     },
   ],
   featureSections: [

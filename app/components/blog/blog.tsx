@@ -1,15 +1,6 @@
-import { BiLogoDribbble, BiLogoLinkedinSquare } from "react-icons/bi";
-import { FaXTwitter } from "react-icons/fa6";
-import { Button } from "../ui/Button";
-
 type ImageProps = {
   src: string;
   alt?: string;
-};
-
-type SocialLink = {
-  href: string;
-  icon: React.ReactNode;
 };
 
 type TeamMember = {
@@ -17,17 +8,18 @@ type TeamMember = {
   name: string;
   jobTitle: string;
   description: string;
-  socialLinks: SocialLink[];
 };
 
 type Props = {
   tagline: string;
   heading: string;
   description: string;
-  button: {
+  button?: {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   };
   teamMembers: TeamMember[];
 };
@@ -42,7 +34,7 @@ export const Team20 = (props: Team20Props) => {
   };
   return (
     <section
-      id="nosotros"
+      id="equipo"
       className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
     >
       <div className="container grid grid-cols-1 items-start md:grid-flow-row md:grid-cols-2 md:gap-x-12 lg:gap-x-20 gap-8">
@@ -52,9 +44,7 @@ export const Team20 = (props: Team20Props) => {
             {heading}
           </h2>
           <p className="md:text-md">{description}</p>
-          <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
-            <Button {...button}>{button.title}</Button>
-          </div>
+          <div className="mt-6 flex flex-wrap gap-4 md:mt-8"></div>
         </div>
 
         <div className="grid grid-cols-1 gap-y-12 md:gap-x-8 md:gap-y-16 lg:gap-x-12">
@@ -83,13 +73,6 @@ const TeamMember = ({ member }: { member: TeamMember }) => {
           <h6 className="md:text-md">{member.jobTitle}</h6>
         </div>
         <p>{member.description}</p>
-        <div className="mt-6 grid grid-flow-col grid-cols-[max-content] gap-[0.875rem] self-start">
-          {member.socialLinks.map((link, index) => (
-            <a key={index} href={link.href}>
-              {link.icon}
-            </a>
-          ))}
-        </div>
       </div>
     </div>
   );
@@ -97,10 +80,10 @@ const TeamMember = ({ member }: { member: TeamMember }) => {
 
 export const Team20Defaults: Props = {
   tagline: "Nuestro Equipo",
-  heading: "Conoce a SILOS",
+  heading: "Quienes Somos",
   description:
-    "Un equipo de profesionales comprometidos con la excelencia legal. Fundador y dos socias con amplia experiencia en subastas, derecho civil y familiar.",
-  button: { title: "Contáctanos", variant: "primary" },
+    "Fundador y socias con amplia trayectoria en subastas judiciales, derecho civil y familiar. Un equipo cercano y profesional dedicado a tu éxito.",
+  button: { title: "Agendar Llamada", variant: "primary", isCalendly: true },
   teamMembers: [
     {
       image: {
@@ -111,11 +94,6 @@ export const Team20Defaults: Props = {
       jobTitle: "Fundador y Socio Director",
       description:
         "Especialista en subastas judiciales con más de 15 años de experiencia. Líder en el sector con un enfoque profesional y resultados probados.",
-      socialLinks: [
-        { href: "#", icon: <BiLogoLinkedinSquare className="size-6" /> },
-        { href: "#", icon: <FaXTwitter className="size-6 p-0.5" /> },
-        { href: "#", icon: <BiLogoDribbble className="size-6" /> },
-      ],
     },
     {
       image: {
@@ -126,11 +104,6 @@ export const Team20Defaults: Props = {
       jobTitle: "Socia - Derecho de Familia",
       description:
         "Experta en derecho de familia y herencias. Reconocida por su trato cercano y efectividad en casos complejos de divorcios y sucesiones.",
-      socialLinks: [
-        { href: "#", icon: <BiLogoLinkedinSquare className="size-6" /> },
-        { href: "#", icon: <FaXTwitter className="size-6 p-0.5" /> },
-        { href: "#", icon: <BiLogoDribbble className="size-6" /> },
-      ],
     },
     {
       image: {
@@ -141,11 +114,6 @@ export const Team20Defaults: Props = {
       jobTitle: "Socia - Intermediación Inmobiliaria",
       description:
         "Especialista en intermediación inmobiliaria y asesoría financiera. Conocimiento profundo del mercado de subastas y oportunidades de inversión.",
-      socialLinks: [
-        { href: "#", icon: <BiLogoLinkedinSquare className="size-6" /> },
-        { href: "#", icon: <FaXTwitter className="size-6 p-0.5" /> },
-        { href: "#", icon: <BiLogoDribbble className="size-6" /> },
-      ],
     },
   ],
 };

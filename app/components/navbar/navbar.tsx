@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "../ui/Button";
+import CalendlyButton from "../calendly/CalendlyButton";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
@@ -53,7 +54,7 @@ export type Navbar18Props = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
 export const Navbar18 = (props: Navbar18Props) => {
-  const { logo, navLinks, button, navBottom } = {
+  const { logo, navLinks, navBottom } = {
     ...Navbar18Defaults,
     ...props,
   };
@@ -78,9 +79,9 @@ export const Navbar18 = (props: Navbar18Props) => {
   return (
     <section
       id="navbar"
-      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center px-[2.5%] md:h-[4rem]"
+      className="sticky top-0 z-[999] bg-white flex min-h-16 w-full items-center  md:h-[4rem]"
     >
-      <div className="mx-auto flex size-full items-center justify-between container">
+      <div className="mx-auto flex size-full items-center justify-between px-[2.5%] container">
         <a
           href={logo.url}
           onClick={(e) => handleNavClick(e, logo.url || "#inicio")}
@@ -89,9 +90,11 @@ export const Navbar18 = (props: Navbar18Props) => {
         </a>
         <div className="flex items-center justify-center gap-2 lg:gap-4">
           <div className="hidden md:block">
-            <Button variant="primary" size="md">
-              {button.title}
-            </Button>
+            <CalendlyButton
+              variant="primary"
+              size="sm"
+              text="Agendar Llamada"
+            />
           </div>
           <button
             className="-mr-2 flex size-12 flex-col items-center justify-center justify-self-end lg:mr-0"
@@ -205,21 +208,15 @@ const Menu = ({
             </a>
           ))}
         </div>
-        <div className="flex min-h-18 items-center justify-between gap-x-4">
-          <a
-            href={navBottom.button.url}
-            onClick={(e) => handleNavClick(e, navBottom.button.url || "#")}
-            className="text-md underline md:text-xl hover:text-[#336a85] transition-colors"
-          >
-            {navBottom.button.title}
-          </a>
-          <div className="flex items-center gap-3">
+        <div className="flex min-h-18 items-center justify-end gap-x-4">
+          
+          {/* <div className="flex items-center gap-3">
             {navBottom.socialMediaLinks.map((link, index) => (
               <a key={index} href={link.url}>
                 {link.icon}
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </div>
@@ -243,11 +240,11 @@ export const Navbar18Defaults: Props = {
     },
     {
       url: "#servicios",
-      title: "Soluciones",
+      title: "Servicios",
     },
     {
-      url: "#blog",
-      title: "Blog",
+      url: "#equipo",
+      title: "Equipo",
     },
     {
       url: "#testimonios",
@@ -269,7 +266,7 @@ export const Navbar18Defaults: Props = {
     ],
   },
   button: {
-    title: "Consulta Gratuita",
+    title: "Agendar Llamada",
     variant: "primary",
     size: "sm",
   },

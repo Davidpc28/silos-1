@@ -12,9 +12,8 @@ import {
 } from "./components/testimonial/testimonial";
 
 import { Contact13, Contact13Defaults } from "./components/footer/footer";
-import { Layout409, Layout409Defaults } from "./components/blog/409";
 import { Blog66, Blog66Defaults } from "./components/blog/66";
-
+import { Footer7, Footer7Defaults } from "./components/footer/Footer7";
 
 export default function Home() {
   return (
@@ -28,9 +27,9 @@ export default function Home() {
       <Layout503 {...Layout503Defaults} />
       <Banner16 {...Banner16Defaults} />
       <Layout416 {...Layout416Defaults} />
-      <Layout409 {...Layout409Defaults} />
       <Blog66 {...Blog66Defaults} />
       <Contact13 {...Contact13Defaults} />
+      <Footer7 {...Footer7Defaults} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import {
 } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { RxChevronRight } from "react-icons/rx";
+import Link from "next/link";
 
 type ImageProps = {
   src: string;
@@ -87,13 +88,13 @@ export const Blog16 = (props: Blog16Props) => {
                     key={index}
                     className="grid gap-x-8 gap-y-6 md:grid-cols-[.75fr_1fr] md:gap-y-4"
                   >
-                    <a href={post.url} className="w-full">
+                    <Link href={post.url} className="w-full">
                       <img
                         src={post.image.src}
                         alt={post.image.alt}
                         className="aspect-square w-full object-cover"
                       />
-                    </a>
+                    </Link>
                     <div className="flex h-full flex-col items-start justify-center">
                       <div className="rb-4 mb-4 flex w-full items-center justify-start">
                         <p className="mr-4 bg-background-secondary px-2 py-1 text-sm font-semibold">
@@ -104,11 +105,11 @@ export const Blog16 = (props: Blog16Props) => {
                         </p>
                       </div>
                       <div className="flex w-full flex-col items-start justify-start">
-                        <a className="mb-2" href={post.url}>
+                        <Link className="mb-2" href={post.url}>
                           <h3 className="text-xl font-bold md:text-2xl">
                             {post.title}
                           </h3>
-                        </a>
+                        </Link>
                         <p>{post.description}</p>
                         <Button
                           {...post.button}
@@ -131,7 +132,7 @@ export const Blog16 = (props: Blog16Props) => {
 
 const subastasPosts: BlogPost[] = [
   {
-    url: "#",
+    url: "/blogs/guia-completa-subastas-judiciales",
     image: {
       src: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200&q=80",
       alt: "Guía subastas judiciales",
@@ -206,7 +207,7 @@ const subastasPosts: BlogPost[] = [
 
 const familiaPosts: BlogPost[] = [
   {
-    url: "#",
+    url: "/blogs/divorcios-aspectos-legales-clave",
     image: {
       src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&q=80",
       alt: "Derecho de familia",
@@ -281,7 +282,7 @@ const familiaPosts: BlogPost[] = [
 
 const civilPosts: BlogPost[] = [
   {
-    url: "#",
+    url: "/blogs/herencias-guia-practica-sucesiones",
     image: {
       src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
       alt: "Herencias y sucesiones",
@@ -514,7 +515,7 @@ const allPosts: BlogPost[] = [
 
 export const Blog16Defaults: Props = {
   tagline: "Recursos Legales",
-  heading: "Artículos y Guías Legales",
+  heading: "Artículos",
   description:
     "Información actualizada y práctica sobre diferentes áreas del derecho.",
   tabs: [
