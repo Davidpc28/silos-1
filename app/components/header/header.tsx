@@ -2,8 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
+import CalendlyButton from "../calendly/CalendlyButton";
+import WhatsAppButton from "../whatsapp/WhatsAppButton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 type ImageProps = {
   src: string;
@@ -17,6 +20,9 @@ type TabContent = {
   buttons: Array<{
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
+    href?: string;
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
   image: ImageProps;
 };
@@ -77,20 +83,36 @@ export const Header103 = (props: Header103Props) => {
             // eslint-disable-next-line react-hooks/rules-of-hooks
             useEffect(() => {
               let timer: NodeJS.Timeout;
-              if (activeTab === trigger.value) {
+              // Detectar si el popup de Calendly está abierto
+              const isCalendlyOpen = () => {
+                const calendlyPopup =
+                  document.querySelector(
+                    '[data-testid="calendly-container"]'
+                  ) ||
+                  document.querySelector(".calendly-popup") ||
+                  document.querySelector('[role="dialog"]');
+                return calendlyPopup !== null;
+              };
+
+              if (activeTab === trigger.value && !isCalendlyOpen()) {
                 setProgress(0);
                 timer = setInterval(() => {
                   setProgress((prev) => {
+                    // Verificar nuevamente si el popup se abrió durante el intervalo
+                    if (isCalendlyOpen()) {
+                      setProgress(0);
+                      return 0;
+                    }
+
                     if (prev >= 100) {
                       clearInterval(timer);
-                      // Saltar a la próxima diapositiva
                       const nextIndex = (index + 1) % tabs.trigger.length;
                       setActiveTab(tabs.trigger[nextIndex].value);
                       return 0;
                     }
-                    return prev + 1; // Ajusta esto para controlar la velocidad
+                    return prev + 1;
                   });
-                }, 40); // 40ms * 100 = 4s por diapositiva, ajustable
+                }, 40);
               }
               return () => clearInterval(timer);
             }, [activeTab, trigger.value, index, tabs.trigger, setActiveTab]);
@@ -129,6 +151,18 @@ export const Header103 = (props: Header103Props) => {
 };
 
 const TabContent = ({ ...content }: TabContent) => {
+  const router = useRouter();
+  const handleNavClick = (href?: string) => {
+    if (href && href.startsWith("#")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (href) {
+      router.push(href);
+    }
+  };
+
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="px-[2.5%] py-16 md:py-24 lg:py-28 container">
@@ -146,11 +180,33 @@ const TabContent = ({ ...content }: TabContent) => {
             {content.description}
           </p>
           <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8 flex-col md:flex-row gap-6 ">
-            {content.buttons.map((button, index) => (
-              <Button key={index} {...button} size="lg">
-                {button.title}
-              </Button>
-            ))}
+            {content.buttons.map((button, index) =>
+              button.isCalendly ? (
+                <CalendlyButton
+                  key={index}
+                  variant={button.variant || "primary"}
+                  size="lg"
+                  text={button.title}
+                />
+              ) : button.isWhatsApp ? (
+                <WhatsAppButton
+                  key={index}
+                  variant={button.variant || "secondary"}
+                  size="lg"
+                  text={button.title}
+                  message="Hola, me gustaría contactar con vosotros a partir de la web SILOS para obtener más información sobre vuestros servicios."
+                />
+              ) : (
+                <Button
+                  key={index}
+                  variant={button.variant}
+                  size="lg"
+                  onClick={() => handleNavClick(button.href)}
+                >
+                  {button.title}
+                </Button>
+              )
+            )}
           </div>
         </motion.div>
       </div>
@@ -196,12 +252,14 @@ export const Header103Defaults: Props = {
           "En SILOS somos expertos en subastas judiciales e inmobiliarias. Te acompañamos en todo el proceso con experiencia, compromiso y cercanía profesional.",
         buttons: [
           {
-            title: "Consulta Gratuita",
+            title: "Agendar Llamada",
             variant: "primary",
+            isCalendly: true,
           },
           {
             title: "Conoce Más",
             variant: "glass",
+            href: "#sobre-nosotros",
           },
         ],
         image: {
@@ -216,12 +274,14 @@ export const Header103Defaults: Props = {
           "Análisis completo de subastas, participación segura y asesoría legal integral. Tu inversión en buenas manos con un equipo experto que te guía en cada paso.",
         buttons: [
           {
-            title: "Nuestras Subastas",
+            title: "Saber Más",
             variant: "primary",
+            href: "/subastas",
           },
           {
-            title: "Contactar",
+            title: "Agendar Llamada",
             variant: "glass",
+            isCalendly: true,
           },
         ],
         image: {
@@ -238,9 +298,10 @@ export const Header103Defaults: Props = {
           {
             title: "Ver Servicios",
             variant: "primary",
+            href: "#servicios",
           },
           {
-            title: "Agendar Cita",
+            title: "Agendar Llamada",
             variant: "glass",
           },
         ],
@@ -258,9 +319,10 @@ export const Header103Defaults: Props = {
           {
             title: "Conoce al Equipo",
             variant: "primary",
+            href: "#equipo",
           },
           {
-            title: "Contáctanos",
+            title: "Agendar Llamada",
             variant: "glass",
           },
         ],

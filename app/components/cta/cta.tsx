@@ -1,4 +1,6 @@
 import { Button } from "../ui/Button";
+import CalendlyButton from "../calendly/CalendlyButton";
+import WhatsAppButton from "../whatsapp/WhatsAppButton";
 
 type Props = {
   heading: string;
@@ -7,6 +9,8 @@ type Props = {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
+    isCalendly?: boolean;
+    isWhatsApp?: boolean;
   }>;
 };
 
@@ -32,11 +36,28 @@ export const Cta51 = (props: Cta51Props) => {
             <p className="md:text-md">{description}</p>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:mt-8">
-            {buttons.map((button, index) => (
-              <Button key={index} {...button}>
-                {button.title}
-              </Button>
-            ))}
+            {buttons.map((button, index) =>
+              button.isCalendly ? (
+                <CalendlyButton
+                  key={index}
+                  variant={button.variant || "primary"}
+                  size={button.size || "md"}
+                  text={button.title}
+                />
+              ) : button.isWhatsApp ? (
+                <WhatsAppButton
+                  key={index}
+                  variant={button.variant || "secondary"}
+                  size={button.size || "md"}
+                  text={button.title}
+                  message="Hola, me gustaría contactar con vosotros a partir de la web SILOS para obtener más información sobre vuestros servicios."
+                />
+              ) : (
+                <Button key={index} {...button}>
+                  {button.title}
+                </Button>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -45,11 +66,11 @@ export const Cta51 = (props: Cta51Props) => {
 };
 
 export const Cta51Defaults: Props = {
-  heading: "¿Listo para tu próxima subasta?",
+  heading: "No esperes más, agenda tu visita hoy",
   description:
-    "Te ofrecemos una consulta gratuita para evaluar tus opciones legales. Nuestro equipo de expertos te guiará en cada paso del proceso.",
+    "Las mejores oportunidades se agotan rápido. Reserva tu cita ahora con nuestro equipo especializado y descubre cómo maximizar tu inversión. Cupos limitados disponibles.",
   buttons: [
-    { title: "Consulta Gratuita", variant: "primary" },
-    { title: "Llámanos Ahora", variant: "secondary" },
+    { title: "Reservar Visita Ahora", variant: "primary", isCalendly: true },
+    { title: "Contactar por WhatsApp", variant: "secondary", isWhatsApp: true },
   ],
 };

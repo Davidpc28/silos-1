@@ -45,7 +45,7 @@ export const Contact13 = (props: Contact13Props) => {
   return (
     <section
       id="contacto"
-      className="px-[2.5%] py-16 md:py-24 lg:py-28 container mx-auto"
+      className="px-[2.5%] py-16 md:py-24 container mx-auto"
     >
       <div className="container">
         <div className="rb-12 mb-12  md:mb-18 lg:mb-20">
@@ -59,7 +59,17 @@ export const Contact13 = (props: Contact13Props) => {
           <div className="grid auto-cols-fr grid-cols-1 gap-x-4 gap-y-10">
             {contacts.map((contact, index) => (
               <div key={index}>
-                <div className="mb-3 md:mb-4">{contact.icon}</div>
+                <div className="mb-3 md:mb-4">
+                  {typeof contact.icon === "string" ? (
+                    <img
+                      src={contact.icon}
+                      alt={contact.title}
+                      className="size-10"
+                    />
+                  ) : (
+                    <div className="size-10">{contact.icon}</div>
+                  )}
+                </div>
                 <h3 className="mb-2 text-md font-bold leading-[1.4] md:text-xl">
                   {contact.title}
                 </h3>
@@ -98,41 +108,41 @@ export const Contact13 = (props: Contact13Props) => {
 
 export const Contact13Defaults: Props = {
   tagline: "Contacto",
-  heading: "Hablemos de tu caso",
+  heading: "¿Hablamos de tu caso?",
   description:
-    "Estamos aquí para ayudarte. Contáctanos para una consulta gratuita y sin compromiso.",
+    "Estamos aquí para ayudarte. Agenda una llamada o envíanos un mensaje para una consulta inicial sin compromiso.",
   contacts: [
     {
-      icon: <BiEnvelope className="size-8" />,
+      icon: "/icons/mail.svg",
       title: "Email",
-      description: "Responderemos en menos de 24 horas.",
+      description: "Respuesta en menos de 24 horas.",
       link: {
         label: "info@silosabogados.com",
         url: "mailto:info@silosabogados.com",
       },
     },
     {
-      icon: <BiPhone className="size-8" />,
+      icon: "/icons/phone.svg",
       title: "Teléfono",
-      description: "Llámanos de lunes a viernes, 9:00 - 18:00h.",
+      description: "Lunes a viernes, 9:00 - 18:00h.",
       link: {
         label: "+34 900 000 000",
         url: "tel:+34900000000",
       },
     },
     {
-      icon: <BiMap className="size-8" />,
+      icon: "/icons/location.svg",
       title: "Oficina",
       description: "Calle Ejemplo 123, 28001 Madrid, España",
       button: {
-        title: "Cómo Llegar",
+        title: "Agendar Llamada",
         variant: "primary",
         iconRight: <RxChevronRight />,
       },
     },
   ],
   image: {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    src: "https://static0.anpoimages.com/wordpress/wp-content/uploads/2022/07/googleMapsTricksHero.jpg",
     alt: "Oficina SILOS",
   },
 };

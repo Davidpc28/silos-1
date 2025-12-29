@@ -1,4 +1,5 @@
 import { Button } from "../ui/Button";
+import Link from "next/link";
 
 type ImageProps = {
   src: string;
@@ -16,6 +17,7 @@ type BlogPost = {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
+    href?: string;
   };
 };
 
@@ -27,6 +29,7 @@ type Props = {
     title: string;
     variant?: "primary" | "secondary" | "white" | "glass";
     size?: "sm" | "md" | "lg";
+    href?: string;
   };
   blogPosts: BlogPost[];
 };
@@ -54,12 +57,19 @@ export const Blog66 = (props: Blog66Props) => {
             <p className="md:text-md">{description}</p>
           </div>
           <div className="hidden flex-wrap items-center justify-end md:block">
-            <Button {...button}>{button.title}</Button>
+            <Button {...button} asChild={button.href ? true : false}>
+              <Link
+                href={button.href || "/"}
+                className="w-full flex items-center justify-center"
+              >
+                {button.title}
+              </Link>
+            </Button>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
-            <a
+            <Link
               key={index}
               href={post.url}
               className="flex size-full flex-col items-center justify-start shadow-xl"
@@ -94,25 +104,35 @@ export const Blog66 = (props: Blog66Props) => {
                   </Button>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
-        <Button {...button} className="mt-12 md:hidden mx-auto w-full">
-          {button.title}
-        </Button>
+        {button.href && (
+          <Button
+            {...button}
+            asChild={true}
+            className="mt-12 md:hidden mx-auto w-full"
+          >
+            <Link
+              href={button.href || "/"}
+              className="w-full flex items-center justify-center"
+            >
+              {button.title}
+            </Link>
+          </Button>
+        )}
       </div>
     </section>
   );
 };
-
 export const Blog66Defaults: Props = {
   tagline: "Recursos Legales",
   heading: "Artículos y Guías",
   description: "Información útil sobre subastas, derecho civil, familia y más.",
-  button: { title: "Ver Todos", variant: "primary" },
+  button: { title: "Ver Todos", variant: "primary", href: "/blogs" },
   blogPosts: [
     {
-      url: "#",
+      url: "/blogs/guia-completa-subastas-judiciales",
       image: {
         src: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200&q=80",
         alt: "Guía subastas judiciales",
@@ -129,7 +149,7 @@ export const Blog66Defaults: Props = {
       },
     },
     {
-      url: "#",
+      url: "/blogs/divorcios-aspectos-legales-clave",
       image: {
         src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&q=80",
         alt: "Derecho de familia",
@@ -146,7 +166,7 @@ export const Blog66Defaults: Props = {
       },
     },
     {
-      url: "#",
+      url: "/blogs/herencias-guia-practica-sucesiones",
       image: {
         src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
         alt: "Herencias y sucesiones",

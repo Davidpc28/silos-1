@@ -65,7 +65,7 @@ export const Banner16 = (props: Banner16Props) => {
     <section
       id="banner-principal"
       ref={sectionRef}
-      className="flex w-screen max-w-full flex-col justify-end overflow-hidden "
+      className="flex w-screen max-w-full flex-col justify-end overflow-hidden py-8 md:py-12 bg-background-secondary"
     >
       <div className="flex justify-end container mx-auto">
         {Array(2)
@@ -93,13 +93,13 @@ const Heading = ({ title, image }: Heading) => {
   return (
     <React.Fragment>
       <div className="flex items-center justify-center whitespace-nowrap px-4 text-center lg:text-left">
-        <h1 className="text-xl font-bold md:text-2xl">{title}</h1>
+        <h3 className="text-lg font-bold md:text-xl text-text-primary">{title}</h3>
       </div>
       <div className="relative w-full overflow-hidden">
         <img
           src={image.src}
           alt={image.alt}
-          className="aspect-square size-full max-h-16 object-cover"
+          className="aspect-square size-full max-h-16 object-cover rounded-lg"
         />
       </div>
     </React.Fragment>

@@ -10,6 +10,9 @@ module.exports = {
   presets: [require("@relume_io/relume-tailwind")],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-space-grotesk)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         primary: {
           DEFAULT: "#5B87DE",

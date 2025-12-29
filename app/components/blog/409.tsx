@@ -165,16 +165,16 @@ const FeatureSectionContent = ({
 );
 
 export const Layout409Defaults: Props = {
-  tagline: "Nuestros Servicios",
-  heading: "Expertos en Subastas y Derecho Inmobiliario",
+  tagline: "Especialistas en Subastas",
+  heading: "Subastas Judiciales",
   description:
-    "En SILOS ofrecemos servicios legales especializados para proteger tus intereses y maximizar tus inversiones en subastas judiciales.",
+    "Abogados especializados en subastas judiciales. Analizamos cada operación para garantizar seguridad jurídica antes, durante y después de la puja.",
   featureSections: [
     {
-      tagline: "Paso 1",
-      heading: "Asesoría Legal Especializada",
+      tagline: "Análisis Completo",
+      heading: "Estudio del Procedimiento Judicial",
       description:
-        "Brindamos asesoría jurídica integral en derecho civil, familiar e inmobiliario. Nuestro equipo analiza cada caso con detalle para ofrecerte las mejores opciones legales y estrategias personalizadas que protejan tus intereses.",
+        "Realizamos un análisis exhaustivo del procedimiento judicial. Examinamos toda la documentación, antecedentes del caso y situación legal del inmueble para que tomes decisiones informadas y seguras en tu inversión.",
       buttons: [
         { title: "Consultar Ahora", variant: "primary" },
         {
@@ -184,14 +184,14 @@ export const Layout409Defaults: Props = {
       ],
       image: {
         src: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80",
-        alt: "Asesoría legal especializada",
+        alt: "Estudio del procedimiento judicial",
       },
     },
     {
-      tagline: "Paso 2",
-      heading: "Intermediación en Subastas Judiciales",
+      tagline: "Seguridad Jurídica",
+      heading: "Análisis Registral y de Cargas",
       description:
-        "Te acompañamos en todo el proceso de subasta judicial, desde la búsqueda de inmuebles hasta la adjudicación final. Analizamos cada propiedad, verificamos su situación legal y te guiamos para que realices una inversión segura y rentable.",
+        "Verificamos el registro de propiedad, identificamos hipotecas, embargos y otros gravámenes. Nos aseguramos de que conoces exactamente qué estás adquiriendo y eliminamos sorpresas desagradables después de la adjudicación.",
       buttons: [
         { title: "Ver Subastas", variant: "primary" },
         {
@@ -201,14 +201,14 @@ export const Layout409Defaults: Props = {
       ],
       image: {
         src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
-        alt: "Subastas judiciales",
+        alt: "Análisis registral",
       },
     },
     {
-      tagline: "Paso 3",
-      heading: "Gestión Inmobiliaria Integral",
+      tagline: "Verificación Posesoria",
+      heading: "Situación Posesoria del Inmueble",
       description:
-        "Ofrecemos servicios completos de intermediación inmobiliaria para compra, venta y arrendamiento. Gestionamos todos los trámites legales necesarios, asegurando transacciones transparentes y seguras para todas las partes involucradas.",
+        "Determinamos quién ocupa el inmueble, qué derechos posee y qué trámites necesitaremos después de la adjudicación. Evitamos conflictos y conoces de antemano cualquier ocupante o situación compleja.",
       buttons: [
         { title: "Contactar", variant: "primary" },
         {
@@ -218,14 +218,14 @@ export const Layout409Defaults: Props = {
       ],
       image: {
         src: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&q=80",
-        alt: "Gestión inmobiliaria",
+        alt: "Situación posesoria",
       },
     },
     {
-      tagline: "Paso 4",
-      heading: "Acompañamiento Post-Adjudicación",
+      tagline: "Acompañamiento Integral",
+      heading: "Asistencia Post-Adjudicación y Desahucios",
       description:
-        "Nuestro servicio no termina con la adjudicación. Te acompañamos en todos los trámites posteriores: escrituración, inscripción registral, recuperación de posesión y cualquier situación legal que surja. Tu inversión está protegida con nosotros.",
+        "Te acompañamos en los trámites tras la adjudicación: escrituración, inscripción registral, recuperación de la posesión y desahucios si es necesario. Tu inversión está completamente protegida desde el inicio hasta la toma de posesión.",
       buttons: [
         { title: "Agendar Cita", variant: "primary" },
         {
@@ -235,7 +235,7 @@ export const Layout409Defaults: Props = {
       ],
       image: {
         src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
-        alt: "Acompañamiento legal",
+        alt: "Acompañamiento legal post-adjudicación",
       },
     },
   ],
