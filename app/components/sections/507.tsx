@@ -67,7 +67,7 @@ export const Layout507 = (props: Layout507Props) => {
                 <TabsTrigger
                   key={index}
                   value={tab.value}
-                  className="flex cursor-pointer w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-8 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
+                  className="flex cursor-pointer w-full items-start justify-start gap-4 whitespace-normal border-0 border-b p-6 text-md font-bold leading-[1.4] duration-0 data-[state=active]:bg-background-primary data-[state=active]:text-text-primary md:items-center md:justify-center md:border-r md:px-6 md:py-6 md:text-xl md:last-of-type:border-r-0 md:data-[state=active]:[border-bottom:1px_solid_#fff]"
                 >
                   {tab.trigger}
                 </TabsTrigger>
@@ -173,7 +173,7 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-2",
-      trigger: "Derecho Civil",
+      trigger: "Civil",
       content: {
         tagline: "Reclamaciones y Contratos",
         heading: "Derecho Civil",
@@ -196,7 +196,7 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-3",
-      trigger: "Derecho de Familia",
+      trigger: "Familia",
       content: {
         tagline: "Divorcios, Custodia y Herencias",
         heading: "Derecho de Familia",
@@ -219,7 +219,7 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-4",
-      trigger: "Derecho Penal",
+      trigger: "Penal",
       content: {
         tagline: "Defensa Integral",
         heading: "Derecho Penal",
@@ -242,7 +242,7 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-5",
-      trigger: "Derecho de Extranjería",
+      trigger: "Extranjería",
       content: {
         tagline: "Inmigración y Residencia",
         heading: "Derecho de Extranjería",
@@ -265,7 +265,7 @@ export const Layout507Defaults: Props = {
     },
     {
       value: "tab-6",
-      trigger: "Herencias y Sucesiones",
+      trigger: "Herencias Sucesiones",
       content: {
         tagline: "Gestión de Patrimonios",
         heading: "Herencias y Sucesiones",
